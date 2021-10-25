@@ -23,5 +23,9 @@ class SinhVienService
         $query = $query->paginate(15);
         return $query;
     }
+
+    public function getDetail($id){
+        return SinhVien::query()->find($id);
+    }
 }
 

@@ -52,9 +52,9 @@ class SinhVienController extends Controller
      * @param  \App\Models\SinhVien  $sinhVien
      * @return \Illuminate\Http\Response
      */
-    public function show(SinhVien $sinhVien)
+    public function show($id)
     {
-        //
+        return response($this->sinhVienService->getDetail($id));
     }
 
     /**
