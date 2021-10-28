@@ -22,9 +22,14 @@ Route::group([
     'prefix' => 'auth'
 
 ], function ($router) {
-
-    Route::get('get-list', [\App\Http\Controllers\SinhVienController::class, 'index']);
-    Route::get('show-detail/{id}', [\App\Http\Controllers\SinhVienController::class, 'show']);
+    Route::group(['prefix' => 'sinhvien'], function ($router){
+        Route::get('get-list', [\App\Http\Controllers\SinhVienController::class, 'index']);
+        Route::get('show-detail/{id}', [\App\Http\Controllers\SinhVienController::class, 'show']);
+    });
+    Route::group(['prefix' => 'hocluc'], function ($router){
+        Route::get('get-list', [\App\Http\Controllers\HocLucController::class, 'index']);
+        //Route::get('show-detail/{id}', [\App\Http\Controllers\HocLucController::class, 'show']);
+    });
     Route::post('logout', [\App\Http\Controllers\AuthController::class, 'logout']);
     Route::post('refresh', [\App\Http\Controllers\AuthController::class, 'refresh']);
     Route::post('me', [\App\Http\Controllers\AuthController::class, 'me']);
