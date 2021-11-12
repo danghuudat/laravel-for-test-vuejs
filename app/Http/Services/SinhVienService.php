@@ -27,5 +27,20 @@ class SinhVienService
     public function getDetail($id){
         return SinhVien::query()->find($id);
     }
+
+    public function update($request, $id){
+        $sinhvien = SinhVien::query()->find($id);
+        $sinhvien->name = $request['name'];
+        $sinhvien->ho = $request['ho'];
+        $sinhvien->email = $request['email'];
+        $sinhvien->lop = $request['lop'];
+        $sinhvien->hocluc = $request['hocluc']['id'];
+        $sinhvien->save();
+        return $sinhvien;
+    }
+
+    public function delete($id){
+        return SinhVien::destroy($id);
+    }
 }
 

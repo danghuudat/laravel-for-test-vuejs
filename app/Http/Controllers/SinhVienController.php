@@ -75,9 +75,9 @@ class SinhVienController extends Controller
      * @param  \App\Models\SinhVien  $sinhVien
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SinhVien $sinhVien)
+    public function update(Request $request, $id)
     {
-        //
+        return response($this->sinhVienService->update($request, $id));
     }
 
     /**
@@ -86,8 +86,8 @@ class SinhVienController extends Controller
      * @param  \App\Models\SinhVien  $sinhVien
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SinhVien $sinhVien)
+    public function destroy($id)
     {
-        //
+        return response($this->sinhVienService->delete($id));
     }
 }

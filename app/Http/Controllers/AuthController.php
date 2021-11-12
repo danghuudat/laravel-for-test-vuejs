@@ -27,6 +27,7 @@ class AuthController extends Controller
      */
     public function login()
     {
+        config()->set('jwt.ttl', 60*24*7);
         $credentials = request(['email', 'password']);
 
         if (! $token = auth('api')->attempt($credentials)) {

@@ -25,9 +25,17 @@ Route::group([
     Route::group(['prefix' => 'sinhvien'], function ($router){
         Route::get('get-list', [\App\Http\Controllers\SinhVienController::class, 'index']);
         Route::get('show-detail/{id}', [\App\Http\Controllers\SinhVienController::class, 'show']);
+        Route::put('update/{id}', [\App\Http\Controllers\SinhVienController::class, 'update']);
+        Route::delete('destroy/{id}', [\App\Http\Controllers\SinhVienController::class, 'destroy']);
     });
     Route::group(['prefix' => 'hocluc'], function ($router){
         Route::get('get-list', [\App\Http\Controllers\HocLucController::class, 'index']);
+        //Route::get('show-detail/{id}', [\App\Http\Controllers\HocLucController::class, 'show']);
+    });
+    Route::group(['prefix' => 'lop'], function ($router){
+        Route::get('get-list', [\App\Http\Controllers\LopController::class, 'index']);
+        Route::get('get-sv-by-lop/{id}', [\App\Http\Controllers\LopController::class, 'getSinhVienByLop']);
+
         //Route::get('show-detail/{id}', [\App\Http\Controllers\HocLucController::class, 'show']);
     });
     Route::post('logout', [\App\Http\Controllers\AuthController::class, 'logout']);
